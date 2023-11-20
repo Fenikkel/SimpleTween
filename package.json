@@ -12,9 +12,9 @@
     "fenikkel",
     "interpolation"
   ],
-  "homepage": "https://github.com/3d-group/unity-package-template.git",
+  "homepage": "https://gist.github.com/Fenikkel/ac17483b76d4dab60963a6b3af638b39#-hi-there-im-pau-fenollosa",
   "bugs": {
-    "url": "https://github.com/3d-group/unity-package-template/issues"
+    "url": "https://github.com/Fenikkel/SimpleTween/issues"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "author": {
     "name": "Fenikkel",
     "email": "paufenollosa@gmail.com",
-    "url": "https://fenikkel.github.io/PauFenollosa/"
+    "url": "https://gist.github.com/Fenikkel/ac17483b76d4dab60963a6b3af638b39#-hi-there-im-pau-fenollosa"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
