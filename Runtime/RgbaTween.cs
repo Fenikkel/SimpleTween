@@ -23,6 +23,8 @@ public static class RgbaTween
     // Dictionary holding the Objects currently used by the active tween
     static Dictionary<int, object[]> _TweenValues = new Dictionary<int, object[]>(); // object[] index order is in -> TweenValues
 
+    public static int ActiveTweens{ get { return _TweenValues.Count; } }
+
     private enum TweenValues
     {
         Coroutine,      // Coroutine
@@ -869,7 +871,6 @@ public static class RgbaTween
     }
     #endregion
     #endregion
-
 }
 
 public enum FadeMode

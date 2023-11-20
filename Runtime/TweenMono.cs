@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class TweenMono : MonoBehaviour
 {
@@ -43,6 +43,16 @@ public class TweenMono : MonoBehaviour
         _Monobehaviour = GetComponent<MonoBehaviour>();
     }
 
+    private void OnEnable()
+    {
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)] // Runs after a scene gets loaded (can change to before)
     public static void StartThis() 
     {
@@ -54,6 +64,14 @@ public class TweenMono : MonoBehaviour
 
         Debug.Log("Initializing TweenMono");
         new GameObject("TweenMono", typeof(TweenMono));
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        if (0 < RgbaTween.ActiveTweens) 
+        {
+            Debug.LogWarning($"Remember to stop the color tweens before unload a scene. Current active tweens: <b>{RgbaTween.ActiveTweens}</b>");
+        }
     }
 
 }

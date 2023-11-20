@@ -218,7 +218,7 @@ public static class PositionTween
 
     private static void SetPosition<T>(T unityObject, Vector3 newPos) where T : UnityEngine.Object
     {
-        Debug.Log(newPos);
+        //Debug.Log(newPos);
 
         switch (unityObject)
         {
@@ -270,6 +270,17 @@ public static class PositionTween
     // Rigidbody
     public static Coroutine Move(this Rigidbody rigidbody, Vector3 targetPosition, float moveTime = 1.0f, Interpolation interpolation = Interpolation.Linear, UnityAction endAction = null)
     {
+        if (!rigidbody.isKinematic)
+        {
+            Debug.LogWarning($"<b>{rigidbody.name}</b> it's not kinematic. It will have buggy collisions.");
+        }
+
+        if (rigidbody.useGravity)
+        {
+            Debug.LogWarning($"<b>{rigidbody.name}</b> it's using gravity. It will have buggy movement.");
+        }
+
+
         return DoMove(rigidbody, targetPosition, moveTime, interpolation, endAction);
     }
 
