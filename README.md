@@ -13,13 +13,17 @@ Library that makes easier the tweens while coding thanks to using extensions. Fo
 &nbsp;
 ## Usage
 Through scripting, you can easily do a colour interpolation using the extensions:
-- image.Fade(FadeMode.In);
-- spriteRenderer.Blink(BlinkMode.OutIn);
-- material.Recolor(Color.red);
+```
+image.Fade(FadeMode.In);
+spriteRenderer.Blink(BlinkMode.OutIn);
+material.Recolor(Color.red);
+```
 
 An active interpolation can be overwritten by another. It can also be stoped smoothly or instantly using:
-- text.StopColorTween();
-- rawImage.ForcedStopColorTween();
+```
+text.StopColorTween();
+rawImage.ForcedStopColorTween();
+```
 
 &nbsp;
 ## Installation
