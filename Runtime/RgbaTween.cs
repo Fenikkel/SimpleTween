@@ -164,7 +164,7 @@ public static class RgbaTween
             if (oldInterpolation != newInterpolation)
             {
                 // TODO
-                // Forzamos el color del step al que seria interpolado con esa nueva interpolaci髇 y continuamos con la nueva interpolaci髇 (con la misma velocidad)...
+                // Forzamos el color del step al que seria interpolado con esa nueva interpolaci贸n y continuamos con la nueva interpolaci贸n (con la misma velocidad)...
             }
         }
         /* CASE 3: Target is same as original(previous) color but different options values */
@@ -180,7 +180,7 @@ public static class RgbaTween
             if (oldInterpolation != newInterpolation)
             {
                 // TODO
-                // Forzamos el color del step al que seria interpolado con esa nueva interpolaci髇 y continuamos con la nueva interpolaci髇 (con la misma velocidad)...
+                // Forzamos el color del step al que seria interpolado con esa nueva interpolaci贸n y continuamos con la nueva interpolaci贸n (con la misma velocidad)...
             }
         }
 
@@ -608,6 +608,9 @@ public static class RgbaTween
             case TextMeshProUGUI textMeshPro:
                 return textMeshPro.color;
 
+            case TextMeshPro textMeshPro:
+                return textMeshPro.color;
+
             case Material material:
                 return material.color;
 
@@ -641,6 +644,10 @@ public static class RgbaTween
                 break;
 
             case TextMeshProUGUI textMeshPro:
+                textMeshPro.color = newColor;
+                break;
+
+            case TextMeshPro textMeshPro:
                 textMeshPro.color = newColor;
                 break;
 
@@ -700,6 +707,12 @@ public static class RgbaTween
         return DoRecolor(text, targetColor, recolorTime, interpolation, endAction);
     }
 
+    // TextMeshPro
+    public static Coroutine Recolor(this TextMeshPro text, Color targetColor = new Color(), float recolorTime = 1.0f, Interpolation interpolation = Interpolation.Linear, UnityAction endAction = null)
+    {
+        return DoRecolor(text, targetColor, recolorTime, interpolation, endAction);
+    }
+
     // CanvasGroup (TODO)
     public static Coroutine Recolor(this CanvasGroup canvasGroup, Color targetColor = new Color(), float recolorTime = 1.0f, Interpolation interpolation = Interpolation.Linear, UnityAction endAction = null)
     {
@@ -745,6 +758,12 @@ public static class RgbaTween
     {
         return DoFade(text, fadeMode, fadeTime, interpolation, endAction);
     }
+
+    // TextMeshPro
+    public static Coroutine Fade(this TextMeshPro text, FadeMode fadeMode = FadeMode.Toggle, float fadeTime = 1.0f, Interpolation interpolation = Interpolation.Linear, UnityAction endAction = null)
+    {
+        return DoFade(text, fadeMode, fadeTime, interpolation, endAction);
+    }
     #endregion
 
     #region Flash types extended
@@ -781,6 +800,12 @@ public static class RgbaTween
 
     // TextMeshProUGUI
     public static Coroutine Flash(this TextMeshProUGUI text, Color flashColor, int loops = int.MaxValue, float goTime = 0.5f, float backTime = 0.5f, float middleWait = 0f, float loopWait = 0f, Interpolation goInterpolation = Interpolation.Linear, Interpolation backInterpolation = Interpolation.Linear, UnityAction endGoAction = null, UnityAction endBackAction = null)
+    {
+        return DoFlash(text, flashColor, loops, goTime, backTime, middleWait, loopWait, goInterpolation, backInterpolation, endGoAction, endBackAction);
+    }
+
+    // TextMeshPro
+    public static Coroutine Flash(this TextMeshPro text, Color flashColor, int loops = int.MaxValue, float goTime = 0.5f, float backTime = 0.5f, float middleWait = 0f, float loopWait = 0f, Interpolation goInterpolation = Interpolation.Linear, Interpolation backInterpolation = Interpolation.Linear, UnityAction endGoAction = null, UnityAction endBackAction = null)
     {
         return DoFlash(text, flashColor, loops, goTime, backTime, middleWait, loopWait, goInterpolation, backInterpolation, endGoAction, endBackAction);
     }
@@ -824,6 +849,11 @@ public static class RgbaTween
         return DoBlink(text, blinkMode, loops, goTime, backTime, middleWait, loopWait, goInterpolation, backInterpolation, endGoAction, endBackAction);
     }
 
+    // TextMeshPro
+    public static Coroutine Blink(this TextMeshPro text, BlinkMode blinkMode = BlinkMode.InOut, int loops = int.MaxValue, float goTime = 0.5f, float backTime = 0.5f, float middleWait = 0f, float loopWait = 0f, Interpolation goInterpolation = Interpolation.Linear, Interpolation backInterpolation = Interpolation.Linear, UnityAction endGoAction = null, UnityAction endBackAction = null)
+    {
+        return DoBlink(text, blinkMode, loops, goTime, backTime, middleWait, loopWait, goInterpolation, backInterpolation, endGoAction, endBackAction);
+    }
 
     #endregion
 
@@ -860,6 +890,12 @@ public static class RgbaTween
 
     // TextMeshProUGUI
     public static Coroutine StopColorTween(this TextMeshProUGUI text)
+    {
+        return DoSoftStop(text);
+    }
+
+    // TextMeshPro
+    public static Coroutine StopColorTween(this TextMeshPro text)
     {
         return DoSoftStop(text);
     }
